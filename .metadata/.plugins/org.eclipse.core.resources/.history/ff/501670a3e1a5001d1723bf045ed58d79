@@ -1,0 +1,12 @@
+package com.deloitte.manager.service;
+
+import org.springframework.stereotype.Service;
+
+import com.deloitte.manager.entity.Manager;
+
+@Service
+public interface ManagerService {
+	public Manager saveManager(Manager manager);
+	
+
+}

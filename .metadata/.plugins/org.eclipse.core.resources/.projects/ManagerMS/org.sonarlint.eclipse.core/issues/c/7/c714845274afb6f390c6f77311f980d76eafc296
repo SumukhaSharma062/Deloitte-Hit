@@ -1,0 +1,10 @@
+
+r
+java:S1126	"AReplace this if-then-else statement by a single return statement.(ÉòÔšûÿÿÿÿHçRMINORZ
+CODE_SMELL
+k
+java:S1118":Add a private constructor to hide the implicit public one.(¹‹ó¿ıÿÿÿÿHèRMAJORZ
+CODE_SMELL
+m
+java:S1126"AReplace this if-then-else statement by a single return statement.(æÈ…HéRMINORZ
+CODE_SMELL

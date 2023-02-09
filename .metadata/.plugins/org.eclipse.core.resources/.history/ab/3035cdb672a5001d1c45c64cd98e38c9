@@ -1,0 +1,5 @@
+package com.deloitte.manager.service;
+
+public class ManagerServiceImpl implements ManagerService{
+
+}

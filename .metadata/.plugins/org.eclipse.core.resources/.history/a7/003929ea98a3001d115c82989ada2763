@@ -1,0 +1,79 @@
+package com.deloitte.employee;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.*;
+
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import com.deloitte.employee.entity.Employee;
+import com.deloitte.employee.repo.EmpRepo;
+import com.deloitte.employee.service.EmployeeService;
+
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
+class EmployeeMsApplicationTests {
+
+	@Autowired
+	private EmployeeService employeeService;
+	
+	@MockBean
+	private EmpRepo empRepo;
+	
+	@Test
+	void contextLoads() {
+	}
+	
+	@Test
+	public void fetchEmployeesTest() {
+		when(empRepo.findAll()).thenReturn(Stream.of(new Employee(1, 101, "Sumukha", "Mysore", "Bangalore")).collect(Collectors.toList()));
+			assertEquals(1, employeeService.fetchEmployees().size());
+		}
+	
+	@Test
+	public void getEmpById() {
+		
+		Integer id = 1;
+		when(empRepo.findById(id)).thenReturn(Optional.of(new Employee(1, 101, "Sumukha", "Mysore", "Mysore")));
+		assertEquals(1, employeeService.getEmpById(id));
+	
+	}
+	
+	@Test
+	public void getByNameTest() {
+		String name = "Sumukha";
+		when(empRepo.findByName(name))
+		.thenReturn(Stream.of(new Employee(11, 101, "Sumukha", "Mysore", "Mysore")).collect(Collectors.toList()));
+		
+		assertEquals(1, employeeService.getEmpByName(name).size());
+	}
+	
+	@Test
+	public void saveEmployeeTest() {
+		Employee employee = new Employee(2, 107, "Rahul", "Belagavi", "Bangalore");
+		when(empRepo.save(employee)).thenReturn(employee);
+		assertEquals(employee, employeeService.saveEmp(employee));
+	}
+	
+	@Test
+public void updateEmployeeTest() {
+		
+		Employee updEmployee = new Employee(2,107, "Rahul","Belagavi","Bangalore");
+		
+		when(empRepo.findById(2)).thenReturn(Optional.of(new Employee(2, 107, "Rahul","Belagavi","Bangalore")));
+		when(empRepo.save(updEmployee)).thenReturn(updEmployee);
+		assertEquals(updEmployee,employeeService.updateEmployees(updEmployee));
+	}
+	
+}
+
+

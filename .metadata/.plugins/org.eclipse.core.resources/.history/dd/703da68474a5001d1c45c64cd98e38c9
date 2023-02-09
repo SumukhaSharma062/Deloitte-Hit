@@ -1,0 +1,9 @@
+package com.deloitte.manager.service;
+
+import com.deloitte.manager.entity.Manager;
+
+public interface ManagerService {
+	public Manager saveManager(Manager manager);
+	public Manager
+
+}

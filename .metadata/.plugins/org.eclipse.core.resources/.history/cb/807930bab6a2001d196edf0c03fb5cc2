@@ -1,0 +1,86 @@
+package com.deloitte.employee;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import static org.mockito.Mockito.*;
+
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import com.deloitte.employee.entity.Employee;
+import com.deloitte.employee.repo.EmpRepo;
+import com.deloitte.employee.service.EmployeeService;
+
+@RunWith(SpringRunner.class)
+
+@SpringBootTest
+class EmploMsApplicationTests {
+	@Autowired
+	private EmployeeService employeeService;
+	
+	@MockBean
+	private EmpRepo empRepo;
+	
+	@Test
+	void contextLoads() {
+	}
+	
+	@Test
+	public void getAllEmployeesTest() {
+		when(empRepo.findAll())
+		.thenReturn(Stream.of(new Employee(1,"Sumukha N","Mysore", "Bangalore"),
+			new Employee(2, "Rahul", "Belgavi", "Bangalore"),
+				new Employee(3, "Ricky", "Odisha", "Mumbai"),
+				new Employee(4, "Ishan", "Jabalpur", "Bangalore")).collect(Collectors.toList()));
+		
+		// Use collectors as it returns a list of employees
+		// 
+		assertEquals(4, employeeService.fetchEmployees().size());	
+	}
+
+	@Test //FAILED
+	public void getByIdTest() {
+		Integer id = 1;
+		when(empRepo.findById(id)).thenReturn(Optional.of(new Employee(1,"Sumukha N","Mysore", "Bangalore")));
+		assertEquals(1, employeeService.getEmpById(id));
+	}
+
+	@Test 
+	public void getByNameTest() {
+		String name = "Venkat";
+		when(empRepo.findByName(name))
+	
+		.thenReturn(Stream.of(new Employee(7, "Venkat", "TamilNadu", "Mumbai")).collect(Collectors.toList()));
+		assertEquals(1, employeeService.getEmpByName(name).size());
+	}
+	
+	@Test
+	public void savePolicies() {
+		Employee employee =  new Employee(8, "Ramesh", "Bangalore", "Bangalore");
+		when(empRepo.save(employee)).thenReturn(employee);
+		assertEquals(employee, employeeService.saveEmp(employee));
+	} 
+	
+	@Test //FAILED
+	public void updatePolicies() {
+		
+		Employee updatedEmp = new Employee(3, "Ricky", "Odisha", "Mumbai");
+		
+		when(empRepo.findById(3)).thenReturn(Optional.of(new Employee(3, "Ricky", "Odisha", "Bangalore")));
+		when(empRepo.save(updatedEmp)).thenReturn(updatedEmp);
+		assertEquals(updatedEmp,employeeService.updateEmployees(updatedEmp,3));
+	}
+	
+	
+		
+}
+	
+

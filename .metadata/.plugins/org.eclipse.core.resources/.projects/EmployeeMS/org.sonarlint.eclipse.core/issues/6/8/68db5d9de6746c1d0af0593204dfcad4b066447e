@@ -1,0 +1,37 @@
+
+`
+java:S5411f"(Use a primitive boolean expression here.(ÈõŒÇùÿÿÿÿ8Ê¹Ôâ0HÈRMINORZ
+CODE_SMELL
+ˆ
+java:S3776`"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(ƒ»†à8²Á‹Ôâ0H¢RCRITICALZ
+CODE_SMELL
+‘
+java:S1128"YRemove this unused import 'org.apache.tomcat.util.http.fileupload.util.mime.MimeUtility'.(ª©åùÿÿÿÿ8Ê¹Ôâ0HÍRMINORZ
+CODE_SMELL
+ˆ
+java:S1128"PRemove this unused import 'com.deloitte.employee.controller.EmployeeController'.(„ŞõŒûÿÿÿÿ8Ê¹Ôâ0HÏRMINORZ
+CODE_SMELL
+t
+java:S3655g"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(ÀÅŸH¯RMAJORZBUG
+‚
+java:S3973f"GUse indentation to denote the code conditionally executed by this "if".(ÈõŒÇùÿÿÿÿ8²Á‹Ôâ0H RCRITICALZ
+CODE_SMELL
+z
+java:S3655V"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(Ïß²ŠÿÿÿÿÿH¬RMAJORZBUG
+`
+java:S5411U"(Use a primitive boolean expression here.(ÄÚò­ıÿÿÿÿ8õ¦Ëºá0H°RMINORZ
+CODE_SMELL
+a
+java:S1128".Remove this unused import 'java.util.Objects'.(¼¸õ›8Ê¹Ôâ0HËRMINORZ
+CODE_SMELL
+u
+java:S2259o"IA "NullPointerException" could be thrown; "updEmployee" is nullable here.(©¬üò8Á¢’Ôâ0HéRMAJORZBUG
+t
+java:S2259|"IA "NullPointerException" could be thrown; "updEmployee" is nullable here.(Ã¤šj8Á¢’Ôâ0HìRMAJORZBUG
+v
+java:S2259ƒ"IA "NullPointerException" could be thrown; "updEmployee" is nullable here.(©Ùª«8Á¢’Ôâ0HïRMAJORZBUG
+u
+java:S2259u"IA "NullPointerException" could be thrown; "updEmployee" is nullable here.(ªğ«8Á¢’Ôâ0HòRMAJORZBUG
+¿
+java:S4449‹"ŠAnnotate the parameter with @javax.annotation.Nullable in method 'save' declaration, or make sure that null can not be passed as argument.(òı»”8Á¢’Ôâ0HõRMAJORZ
+CODE_SMELL

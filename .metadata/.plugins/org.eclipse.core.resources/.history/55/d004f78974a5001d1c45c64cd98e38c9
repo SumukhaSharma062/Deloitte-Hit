@@ -1,0 +1,33 @@
+package com.deloitte.manager.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.deloitte.manager.entity.Manager;
+import com.deloitte.manager.exception.BusinessException;
+import com.deloitte.manager.repo.ManagerRepo;
+
+public class ManagerServiceImpl implements ManagerService{
+
+	@Autowired
+	private ManagerRepo manRepo;
+	@Override
+	public Manager saveEmp(Manager manager) {
+		if(manager.getManagerName()==null || manager.getManagerName().length()==0) {
+			throw new BusinessException("400", "Please add proper Manager name, this column cannot be blank");
+		}
+		if(manager.getAddress()==null || manager.getAddress().length()==0) {
+			throw new BusinessException("400", "Please add proper address, this column cannot be blank");
+		}
+		if(manager.getLocation()==null ||manager.getLocation().length()==0) {
+			throw new BusinessException("400", "Please add proper location, this coloumn cannot be blank");
+		}
+		try {
+		return manRepo.save(manager);
+	}catch(IllegalArgumentException e) {
+		throw new BusinessException("400", "Given data is null,please add valid details" +e.getMessage());
+	}catch(Exception e) {
+		throw new BusinessException("400", "Something went wrong in Service layer,Try again!!" + e.getMessage());
+	}
+
+	}
+}

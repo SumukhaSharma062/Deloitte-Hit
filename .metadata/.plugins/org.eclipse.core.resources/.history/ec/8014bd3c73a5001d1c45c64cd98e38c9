@@ -1,0 +1,19 @@
+package com.deloitte.manager.service;
+
+import com.deloitte.manager.entity.Manager;
+import com.deloitte.manager.exception.BusinessException;
+
+public class ManagerServiceImpl implements ManagerService{
+
+	@Override
+	public Manager saveEmp(Manager manager) {
+		if(manager.getManagerName()==null || manager.getManagerName().length()==0) {
+			throw new BusinessException("400", "Please add proper Manager name, this column cannot be blank");
+		}
+		if(manager.getAddress()==null || manager.getAddress().length()==0) {
+			throw new BusinessException("400", "Please add proper address, this column cannot be blank");
+		}
+		return null;
+	}
+
+}

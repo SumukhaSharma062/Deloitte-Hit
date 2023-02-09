@@ -1,0 +1,58 @@
+
+]
+java:S1452‚"&Remove usage of generic wildcard type.(Î…©²8•ß¯»â0H¿RCRITICALZ
+CODE_SMELL
+…
+java:S2293n"YReplace the type specification in this constructor call with the diamond operator ("<>").(€åòH½RMINORZ
+CODE_SMELL
+r
+java:S4684X"@Replace this persistent entity with a simple POJO or DTO object.(àÛá¹HËRCRITICALZVULNERABILITY
+U
+java:S1452X"&Remove usage of generic wildcard type.(àÛá¹H·RCRITICALZ
+CODE_SMELL
+i	java:S106>"9Replace this use of System.out or System.err by a logger.(ÀÿüùÿÿÿÿHÌRMAJORZ
+CODE_SMELL
+r
+java:S4684*"@Replace this persistent entity with a simple POJO or DTO object.(åù»ôHµRCRITICALZVULNERABILITY
+Z
+java:S3740="/Provide the parametrized type for this generic.(‚‘¤#HÁRMAJORZ
+CODE_SMELL
+ƒ
+java:S1128"PRemove this unused import 'com.deloitte.employee.exception.ControllerException'.(Šˆşø8²³ëá0HÄRMINORZ
+CODE_SMELL
+…
+java:S2293{"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ú¹©³H¸RMINORZ
+CODE_SMELL
+…
+java:S2293M"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ÿ¶Ú²H³RMINORZ
+CODE_SMELL
+Z
+java:S1452;"&Remove usage of generic wildcard type.(ïâ’úÿÿÿÿH¶RCRITICALZ
+CODE_SMELL
+Š
+java:S2293?"YReplace the type specification in this constructor call with the diamond operator ("<>").(ú¾ë›ıÿÿÿÿHºRMINORZ
+CODE_SMELL
+Š
+java:S2293."YReplace the type specification in this constructor call with the diamond operator ("<>").(´¿”ËùÿÿÿÿHÈRMINORZ
+CODE_SMELL
+Š
+java:S2293\"YReplace the type specification in this constructor call with the diamond operator ("<>").(¯êë…ıÿÿÿÿHÆRMINORZ
+CODE_SMELL
+Z
+java:S1452J"&Remove usage of generic wildcard type.(‹‹ê’şÿÿÿÿHÍRCRITICALZ
+CODE_SMELL
+’
+java:S2293„"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ù÷Ä‡ÿÿÿÿÿ8•ß¯»â0HÂRMINORZ
+CODE_SMELL
+Z
+java:S1452x"&Remove usage of generic wildcard type.(ÿ›¶¡şÿÿÿÿHÀRCRITICALZ
+CODE_SMELL
+o
+java:S1155z">Use isEmpty() to check whether the collection is empty or not.(şÒŠ›ûÿÿÿÿHÎRMINORZ
+CODE_SMELL
+U
+java:S1452*"&Remove usage of generic wildcard type.(åù»ôHÊRCRITICALZ
+CODE_SMELL
+U
+java:S1452i"&Remove usage of generic wildcard type.(×Ë÷·H¼RCRITICALZ
+CODE_SMELL

@@ -1,0 +1,64 @@
+package com.deloitte.manager.entity;
+
+import org.springframework.data.annotation.Id;
+
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "ManagerTable")
+
+public class Manager {
+
+	@Id
+	private Integer managerId;
+	private String managerName;
+	private String address;
+	private String location;
+	private Integer yoe;
+	public Integer getManagerId() {
+		return managerId;
+	}
+	public void setManagerId(Integer managerId) {
+		this.managerId = managerId;
+	}
+	public String getManagerName() {
+		return managerName;
+	}
+	public void setManagerName(String managerName) {
+		this.managerName = managerName;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		address = address;
+	}
+	public String getLocation() {
+		return location;
+	}
+	public void setLocation(String location) {
+		this.location = location;
+	}
+	public Integer getYoe() {
+		return yoe;
+	}
+	public void setYoe(Integer yoe) {
+		this.yoe = yoe;
+	}
+	@Override
+	public String toString() {
+		return "Manager [managerId=" + managerId + ", managerName=" + managerName + ", address=" + address
+				+ ", location=" + location + ", yoe=" + yoe + "]";
+	}
+	public Manager(Integer managerId, String managerName, String address, String location, Integer yoe) {
+		super();
+		this.managerId = managerId;
+		this.managerName = managerName;
+		this.address = address;
+		this.location = location;
+		this.yoe = yoe;
+	}
+	public Manager() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+}

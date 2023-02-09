@@ -1,0 +1,43 @@
+package com.deloitte.employee;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.*;
+
+import java.util.Optional;
+import java.util.stream.*;
+
+import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mockito;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import com.deloitte.employee.entity.Employee;
+import com.deloitte.employee.repo.EmpRepo;
+import com.deloitte.employee.service.EmployeeService;
+
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
+class HealthInsuranceApplicationTests {
+
+	@Autowired
+	private EmployeeService employeeService;
+
+	@MockBean
+	private EmpRepo empRepo; 
+		
+	void contextLoads() {
+	}
+
+	@Test
+	public void getAllEmployeeTest() {
+		when(empRepo.findAll()).thenReturn(Stream.of(new Employee(1, 101, "Sumukha", "Mysore", "Bangalore"), 
+				new Employee(2, 107, "Rahul", "Belagavi", "Bangalore")).collect(Collectors.toList()));
+		
+		assertEquals(2, employeeService.fetchEmployees().size());
+	}
+
+}

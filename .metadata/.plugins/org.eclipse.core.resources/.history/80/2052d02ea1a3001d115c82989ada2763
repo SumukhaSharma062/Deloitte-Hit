@@ -1,0 +1,11 @@
+package com.deloitte.manager.entity;
+
+public class Manager {
+
+	private Integer managerId;
+	private String managerName;
+	private String Address;
+	private String location;
+	private Integer yoe;
+	
+}

@@ -1,0 +1,8 @@
+
+g	java:S125"<This block of commented-out lines of code should be removed.(öáåİH¤RMAJORZ
+CODE_SMELL
+g	java:S125"<This block of commented-out lines of code should be removed.(ÎŸÍÿH¦RMAJORZ
+CODE_SMELL
+
+java:S1128"NRemove this unused import 'org.springframework.data.mongodb.repository.Query'.(Ç§ò•øÿÿÿÿH¢RMINORZ
+CODE_SMELL

@@ -1,0 +1,176 @@
+package com.deloitte.employee.service;
+
+import java.util.List;
+import java.util.Objects;
+
+import org.apache.tomcat.util.http.fileupload.util.mime.MimeUtility;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.deloitte.employee.controller.EmployeeController;
+import com.deloitte.employee.entity.Employee;
+import com.deloitte.employee.exception.BusinessException;
+import com.deloitte.employee.repo.EmpRepo;
+import com.deloitte.employee.util.Utility;
+
+@Service
+public class EmployeeServiceImpl implements EmployeeService{
+
+	@Autowired
+	private EmpRepo empRepo;
+	
+	Logger logger = LoggerFactory.getLogger(EmployeeServiceImpl.class); 
+
+
+	@Override
+	public Employee saveEmp(Employee emp) {	
+		logger.info("Create started");
+		
+		if (emp.getName()==null || emp.getName().length()==0) {
+			throw new BusinessException("400", "Please add proper name, this field cannot be blank");
+		}
+		if(emp.getAddress()==null || emp.getAddress().length()==0) {
+			throw new BusinessException("400", "Please add proper address, this field cannot be blank");
+		}
+		if(emp.getLocation()==null || emp.getLocation().length()==0) {
+			throw new BusinessException("400", "Please add proper address, this field cannot be blank");
+		}
+		if(emp.getManagerId().equals(0)) {
+			throw new BusinessException("400", "Please assign the Employee with a Manager");
+		}
+		if(emp.getManagerId()==null) {
+			throw new BusinessException("400","Please enter proper manager ID, thic field cannot be null");
+		}
+		try {
+			return empRepo.save(emp);	
+		}catch(IllegalArgumentException e) {
+			
+			logger.error("Error in Create");
+
+			throw new BusinessException("400", "Given data is null,please add valid details" +e.getMessage());
+		}catch (Exception e) {
+			throw new BusinessException("400", "Something went wrong in Service layer,Try again!!" + e.getMessage());
+		}
+	}
+	
+	
+	@Override
+	public List<Employee> fetchEmployees() {
+		
+		logger.info("Get All Employees Operation Started");
+		
+			List<Employee> list;
+			try {
+				list = empRepo.findAll();			
+			}catch(Exception e) {
+				throw new BusinessException("400","Something happened in the Service layer while fetching all employees"+e.getMessage());
+			}
+			
+			if(list.isEmpty()) {
+				throw new BusinessException("400","The list is empty, there is nothing to display");
+			}
+		return list;
+	}
+	
+	
+	@Override
+	public Employee getEmpById(Integer employeeId) {
+		
+		logger.info("Get Employees by ID Operation Started");
+		
+		try {
+			if(Utility.validateInt(employeeId))
+			    return empRepo.findById(employeeId).get();
+		}catch(IllegalArgumentException e) {
+			throw new BusinessException("400","Given id is null, please add valid details");
+		}catch(java.util.NoSuchElementException e) {
+			throw new BusinessException("400","Given id does not exist in database");
+		}
+		return null;
+	}
+	
+	
+	@Override
+	public Employee updateEmployees(Employee employee) {
+		
+		logger.info("Update started");
+		Employee updEmployee ;
+
+		try {
+			updEmployee = empRepo.findById(employee.getEmployeeId()).get();
+		}
+		catch(Exception e) {
+				
+				logger.info("Error in update");
+				throw new BusinessException("400","Employee does not exist");
+			}
+
+
+		if(employee.getManagerId()!=null){
+			updEmployee.setManagerId(employee.getManagerId());
+			
+			logger.info("Manager ID updated");
+		}
+		if ((employee.getName()!=null))
+		{
+		 if(!employee.getName().isEmpty()) 
+			 updEmployee.setName(employee.getName());
+		 else 
+			 throw new BusinessException("400","'Name' is null, please provide valid details");
+		}
+		
+		
+		if ((employee.getAddress()!=null))
+			{
+			 if(!employee.getAddress().isEmpty()) 
+				 updEmployee.setAddress(employee.getAddress());
+			 else 
+				 throw new BusinessException("400","'Address' is null, please provide valid details");
+			}
+			
+			
+		if ((employee.getLocation()!=null))
+		{
+		 if(!employee.getLocation().isEmpty()) 
+			 updEmployee.setLocation(employee.getLocation());
+		 else 
+			 throw new BusinessException("400","'Location' is null, please provide valid details");
+		}
+		
+		try {
+			logger.info("Employee updated");
+
+			return empRepo.save(updEmployee);
+		}catch (Exception e) {
+			throw new BusinessException("400","Something happened in the service layer while updating"+e.getMessage());
+		}
+	}
+	@Override
+	public void deleteEmp(Integer employeeId) {
+		Employee delEmp;
+
+try {
+	logger.info("Employee Deleted");
+
+	empRepo.deleteById(employeeId);
+}catch(IllegalArgumentException e) {
+	throw new BusinessException("400","given id is null, please add valid details"+e.getMessage());
+}catch(java.util.NoSuchElementException e) {
+	throw new BusinessException("400","given id does not exist in the database"+e.getMessage());
+}if(empRepo.existsById(employeeId)) {
+	throw new BusinessException("400","Given id does not exist in database");
+}
+	}
+	
+	@Override
+	public List<Employee> getEmpByName(String name) {
+		logger.info("Get Employees by Name Operation started");
+
+		return empRepo.findByName(name);
+	}
+	
+		
+	
+}

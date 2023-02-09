@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;com.deloitte.manager.exceptiopn&apos; to &apos;com.deloitte.manager.exception&apos;&#x0D;&#x0A;- Original project: &apos;ManagerMS&apos;&#x0D;&#x0A;- Original element: &apos;ManagerMS/src/main/java/com.deloitte.manager.exceptiopn&apos;&#x0D;&#x0A;- Renamed element: &apos;ManagerMS/src/main/java/com.deloitte.manager.exception&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;com.deloitte.manager.exceptiopn&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.deloitte.manager.exceptiopn" name="com.deloitte.manager.exception" qualified="false" references="true" stamp="1675614384059" textual="false" version="1.0"/>
+</session>

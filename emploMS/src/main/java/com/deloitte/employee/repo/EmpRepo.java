@@ -1,0 +1,22 @@
+package com.deloitte.employee.repo;
+
+import java.util.List;
+
+
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
+
+import com.deloitte.employee.entity.Employee;
+
+
+public interface EmpRepo extends MongoRepository<Employee, Integer>{
+	
+	
+		List<Employee> findByName(String name);
+//		List<Employee> findByNameStartingWith(String name); 
+//		List<Employee> findByNameEndingWith(String name);
+	 
+//	  List<Employee> findByEmpIdLessThan(Integer employeeid); 
+//	  List<Employee> findByEmpIdGreaterThan(Integer employeeid);
+	 
+}
